@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id   String @id @default(uuid())
+
+  // User fields
+  email     String   @unique
+  name      String
+
+  // Relations
+  tasks     Task[]
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Task {
+  id   String @id @default(uuid())
+
+  // Task fields
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+
+  // Relations
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+
+  // Timestamps
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+  @@map("tasks")
+}
