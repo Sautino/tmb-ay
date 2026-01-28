@@ -3,7 +3,7 @@
 ## Documentation
 
 - [Quickstart](/docs/basic-setup.md)
-- [Architektur](/docs/basic-setup.md.md)
+- [Architektur](/docs/architecture.md)
 - [Fehlende Implementierungen](/docs/missing-implementations.md)
 
 ## Privates Projekt
